@@ -2,7 +2,7 @@
 
 namespace Deg540\PHPTestingBoilerplate;
 
-class Calculator
+class StringCalculator
 {
     function add(int $number1, int $number2): int
     {
