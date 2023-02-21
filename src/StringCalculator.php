@@ -6,13 +6,12 @@ use function PHPUnit\Framework\isEmpty;
 
 class StringCalculator
 {
-    function Add(String $numbers):int
+    function add(String $numbers):int
     {
         if(empty($numbers))
             return 0;
-        else{
+        else
             return strval($numbers);
-        }
 
         return -1;
     }

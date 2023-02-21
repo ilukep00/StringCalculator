@@ -9,15 +9,22 @@ use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorTest extends TestCase
 {
+    private StringCalculator $stringCalculator;
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this-> stringCalculator = new StringCalculator();
+
+    }
+
     /**
      * @test
      */
     public function returns_zero_for_empty_string()
     {
+        
 
-        $stringCalculator = new StringCalculator();
-
-        $result = $stringCalculator->Add("");
+        $result = $this -> stringCalculator->add("");
 
         $this->assertEquals(0,$result);
 
@@ -25,11 +32,10 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_number_for_string_with_one_number(){
-
-        $stringCalculator = new StringCalculator();
-
-        $result = $stringCalculator->Add("2");
+    public function returns_number_for_string_with_one_number()
+    {
+        
+        $result = $this -> stringCalculator->add("2");
 
         $this->assertEquals(2,$result);
     }
