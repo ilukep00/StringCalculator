@@ -12,24 +12,14 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function shouldAddTwoArguments()
+    public function returns_zero_for_empty_string()
     {
-        $calculator = new StringCalculator();
+        $stringCalculator = new StringCalculator();
 
-        $result = $calculator->add(1, 2);
+        $result = $stringCalculator->Add("");
 
-        $this->assertEquals(3, $result);
+        $this->assertEquals(0,$result);
+
     }
 
-    /**
-     * @test
-     */
-    public function shouldMultiplyTwoArguments()
-    {
-        $calculator = new StringCalculator();
-
-        $result = $calculator->multiply(1, 2);
-
-        $this->assertEquals(2, $result);
-    }
 }
