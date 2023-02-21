@@ -8,9 +8,9 @@ class StringCalculator
 {
     function Add(String $numbers):int
     {
-        if(empty($numbers)){
+        if(empty($numbers))
             return 0;
-        }
+
         return -1;
     }
 }
