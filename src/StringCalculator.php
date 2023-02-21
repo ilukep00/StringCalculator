@@ -6,15 +6,17 @@ use function PHPUnit\Framework\isEmpty;
 
 class StringCalculator
 {
-    function add(String $numbers):int
+    function add(String $addParameters):int
     {
-        if(empty($numbers))
+        if(empty($addParameters))
             return 0;
         else {
-            $numbers_string = explode(",", $numbers);
-            if (sizeof($numbers_string) == 2)
-                return strval($numbers_string[0]) + strval($numbers_string[1]);
-            return strval($numbers_string[0]);
+            $numbers_array = explode(",", $addParameters);
+            $addResult = 0;
+            for ($i = 0; $i < sizeof($numbers_array); $i++){
+                $addResult += $numbers_array[$i];
+            }
+            return $addResult;
         }
     }
 }

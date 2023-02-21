@@ -22,11 +22,9 @@ final class StringCalculatorTest extends TestCase
      */
     public function returns_zero_for_empty_string()
     {
-        
+        $addedResult = $this -> stringCalculator->add("");
 
-        $result = $this -> stringCalculator->add("");
-
-        $this->assertEquals(0,$result);
+        $this->assertEquals(0,$addedResult);
 
     }
     /**
@@ -34,10 +32,9 @@ final class StringCalculatorTest extends TestCase
      */
     public function returns_number_for_string_with_one_number()
     {
-        
-        $result = $this -> stringCalculator->add("1");
+        $addedResult = $this -> stringCalculator->add("1");
 
-        $this->assertEquals(1,$result);
+        $this->assertEquals(1,$addedResult);
     }
 
     /**
@@ -45,10 +42,9 @@ final class StringCalculatorTest extends TestCase
      */
     public function returns_sum_for_string_with_two_numbers()
     {
+        $addedResult = $this -> stringCalculator->add("1,2");
 
-        $result = $this -> stringCalculator->add("1,2");
-
-        $this->assertEquals(3,$result);
+        $this->assertEquals(3,$addedResult);
     }
     
     
