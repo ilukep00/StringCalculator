@@ -11,13 +11,10 @@ class StringCalculator
         if(empty($numbers))
             return 0;
         else {
-            $numbers_array = explode(",", $numbers);
-            if(sizeof($numbers_array) == 2){
-                return strval($numbers_array[0])+strval($numbers_array[1]);
-            }else{
-                return strval($numbers_array[0]);
-            }
+            $numbers_string = explode(",", $numbers);
+            if (sizeof($numbers_string) == 2)
+                return strval($numbers_string[0]) + strval($numbers_string[1]);
+            return strval($numbers_string[0]);
         }
-      
     }
 }
