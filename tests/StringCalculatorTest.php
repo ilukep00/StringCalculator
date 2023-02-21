@@ -14,6 +14,7 @@ final class StringCalculatorTest extends TestCase
      */
     public function returns_zero_for_empty_string()
     {
+
         $stringCalculator = new StringCalculator();
 
         $result = $stringCalculator->Add("");
@@ -21,5 +22,18 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals(0,$result);
 
     }
+    /**
+     * @test
+     */
+    public function returns_number_for_string_with_one_number(){
+
+        $stringCalculator = new StringCalculator();
+
+        $result = $stringCalculator->Add("2");
+
+        $this->assertEquals(2,$result);
+    }
+    
+    
 
 }
