@@ -10,9 +10,10 @@ class StringCalculator
     {
         if(empty($numbers))
             return 0;
-        else
-            return strval($numbers);
-
-        return -1;
+        else {
+            $numbers_array = explode(",", $numbers);
+            return strval($numbers_array[0]);
+        }
+      
     }
 }

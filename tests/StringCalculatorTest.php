@@ -39,6 +39,17 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(2,$result);
     }
+
+    /**
+     * @test
+     */
+    public function returns_sum_for_string_with_two_numbers()
+    {
+
+        $result = $this -> stringCalculator->add("2,4");
+
+        $this->assertEquals(6,$result);
+    }
     
     
 
