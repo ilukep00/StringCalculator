@@ -17,14 +17,16 @@ class StringCalculator
             $delimiters = '/,|\n/';
             if(str_starts_with($addParameters,"//")){
                 list($delimiter, $addParameters) = explode("\n",$addParameters,2);
-                $delimiters = '/'.substr($delimiter,2).'/';
+                if(substr($delimiter,2) == "[]")
+                    $delimiters = "/[\D]*/";
+                else
+                    $delimiters = '/'.substr($delimiter,2).'/';
             }
-            echo $delimiters;
             $numbersArray = preg_split($delimiters,$addParameters);
             $addResult = 0;
             $negativeNumbers = "";
             for ($i = 0; $i < sizeof($numbersArray); $i++){
-                if($numbersArray[$i] <= 1000) {
+                if(!empty($numbersArray[$i]) and $numbersArray[$i] <= 1000) {
                     $addResult += $numbersArray[$i];
                     if ($numbersArray[$i] < 0)
                         $negativeNumbers .= $numbersArray[$i];
