@@ -11,14 +11,12 @@ class StringCalculator
         if(empty($addParameters))
             return 0;
         else {
-            if($addParameters[0] =="/" and $addParameters[1] =="/"){
-                list($delimiter, $numbers) = explode("\n",$addParameters,2);
-                $delimiter = substr($delimiter,2);
-                $numbersArray = explode($delimiter, $numbers);
+            $delimiters = '/[,|\n]/';
+            if(str_starts_with($addParameters,"//")){
+                list($delimiter, $addParameters) = explode("\n",$addParameters,2);
+                $delimiters = '/'.substr($delimiter,2).'/';
             }
-            else{
-                $numbersArray = preg_split('/[,|\n]/',$addParameters);
-            }
+            $numbersArray = preg_split($delimiters,$addParameters);
             $addResult = 0;
             for ($i = 0; $i < sizeof($numbersArray); $i++){
                 $addResult += $numbersArray[$i];
