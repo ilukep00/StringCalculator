@@ -78,7 +78,16 @@ final class StringCalculatorTest extends TestCase
     public function return_exception_of_using_negative_numbers(){
         $this->expectExceptionMessage('Numeros Negativos: -2');
 
-        $addedResult = $this -> stringCalculator->add("1,-2,3,5,8");
+        $this -> stringCalculator->add("1,-2,3,5,8");
+    }
+
+    /**
+     * @test
+     */
+    public function return_ignore_numbers_upper_than_1000(){
+        $addedResult = $this -> stringCalculator->add("2,10003");
+
+        $this->assertEquals(2,$addedResult);
     }
 
 }
