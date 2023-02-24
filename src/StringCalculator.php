@@ -11,6 +11,7 @@ class StringCalculator
         if(empty($addParameters))
             return 0;
         else {
+            $addParameters = str_replace("\n",",",$addParameters);
             $numbers_array = explode(",", $addParameters);
             $addResult = 0;
             for ($i = 0; $i < sizeof($numbers_array); $i++){

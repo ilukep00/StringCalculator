@@ -62,7 +62,7 @@ final class StringCalculatorTest extends TestCase
     {
         $addedResult = $this -> stringCalculator->add("1\n2,3");
 
-        $this->assertEquals(3,$addedResult);
+        $this->assertEquals(6,$addedResult);
     }
     
     
