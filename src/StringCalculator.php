@@ -19,6 +19,7 @@ class StringCalculator
                 list($delimiter, $addParameters) = explode("\n",$addParameters,2);
                 $delimiters = '/'.substr($delimiter,2).'/';
             }
+            echo $delimiters;
             $numbersArray = preg_split($delimiters,$addParameters);
             $addResult = 0;
             $negativeNumbers = "";

@@ -90,4 +90,13 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals(2,$addedResult);
     }
 
+    /**
+     * @test
+     */
+    public function return_sum_with_delimiters_with_any_lenght(){
+        $addedResult = $this -> stringCalculator->add("//[]\n12***3");
+
+        $this->assertEquals(6,$addedResult);
+    }
+
 }
