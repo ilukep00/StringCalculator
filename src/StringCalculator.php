@@ -23,6 +23,8 @@ class StringCalculator
             $addResult = 0;
             $negativeNumbers = "";
             for ($i = 0; $i < sizeof($numbersArray); $i++){
+                if($numbersArray[$i] > 1000)
+                    continue;
                 $addResult += $numbersArray[$i];
                 if($numbersArray[$i] < 0)
                     $negativeNumbers .= $numbersArray[$i];
