@@ -2,7 +2,10 @@
 
 namespace Deg540\PHPTestingBoilerplate;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Throws;
+use PHPUnit\Exception;
 use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\throwException;
 
 class StringCalculator
 {
@@ -18,9 +21,14 @@ class StringCalculator
             }
             $numbersArray = preg_split($delimiters,$addParameters);
             $addResult = 0;
+            $negativeNumbers = "";
             for ($i = 0; $i < sizeof($numbersArray); $i++){
                 $addResult += $numbersArray[$i];
+                if($numbersArray[$i] < 0)
+                    $negativeNumbers .= $numbersArray[$i];
             }
+            if(strlen($negativeNumbers) > 0)
+                throw new \Exception('Numeros Negativos: '.$negativeNumbers);
             return $addResult;
         }
     }
