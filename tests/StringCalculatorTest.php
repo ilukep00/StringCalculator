@@ -64,7 +64,14 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(6,$addedResult);
     }
-    
-    
+
+    /**
+     * @test
+     */
+    public function return_sum_using_different_delimiters(){
+        $addedResult = $this -> stringCalculator->add("//;\n1;2");
+
+        $this->assertEquals(3,$addedResult);
+    }
 
 }
