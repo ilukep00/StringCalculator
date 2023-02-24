@@ -30,7 +30,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_number_for_string_with_one_number()
+    public function returns_number_for_string_with_only_this_number()
     {
         $addedResult = $this -> stringCalculator->add("1");
 
@@ -43,6 +43,24 @@ final class StringCalculatorTest extends TestCase
     public function returns_sum_for_string_with_two_numbers()
     {
         $addedResult = $this -> stringCalculator->add("1,2");
+
+        $this->assertEquals(3,$addedResult);
+    }
+    /**
+     * @test
+     */
+    public function returns_sum_for_string_with_any_amount_of_numbers()
+    {
+        $addedResult = $this -> stringCalculator->add("1,2,3,5,8");
+
+        $this->assertEquals(19,$addedResult);
+    }
+    /**
+     * @test
+     */
+    public function returns_sum_using_line_up_as_delimitator()
+    {
+        $addedResult = $this -> stringCalculator->add("1\n2,3");
 
         $this->assertEquals(3,$addedResult);
     }
