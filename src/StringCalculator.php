@@ -11,11 +11,10 @@ class StringCalculator
         if(empty($addParameters))
             return 0;
         else {
-            $addParameters = str_replace("\n",",",$addParameters);
-            $numbers_array = explode(",", $addParameters);
+            $numbersArray = preg_split('/[,|\n]/',$addParameters);
             $addResult = 0;
-            for ($i = 0; $i < sizeof($numbers_array); $i++){
-                $addResult += $numbers_array[$i];
+            for ($i = 0; $i < sizeof($numbersArray); $i++){
+                $addResult += $numbersArray[$i];
             }
             return $addResult;
         }
