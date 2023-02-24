@@ -64,7 +64,6 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(6,$addedResult);
     }
-
     /**
      * @test
      */
@@ -72,6 +71,13 @@ final class StringCalculatorTest extends TestCase
         $addedResult = $this -> stringCalculator->add("//;\n1;2");
 
         $this->assertEquals(3,$addedResult);
+    }
+    /**
+     * @test
+     */
+    public function return_exception_of_using_negative_numbers(){
+        $addedResult = $this -> stringCalculator->add("1,-2,3,5,8");
+        $this->expectException("Numeros negativos: -2");
     }
 
 }
