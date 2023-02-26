@@ -11,30 +11,63 @@ class StringCalculator
 {
     function add(String $addParameters):int
     {
-        if(empty($addParameters))
+        if (empty($addParameters))
             return 0;
         else {
-            $delimiters = '/,|\n/';
-            if(str_starts_with($addParameters,"//")){
-                list($delimiter, $addParameters) = explode("\n",$addParameters,2);
-                if(substr($delimiter,2,2) == "[]")
-                    $delimiters = "/[\D]*/";
-                else
-                    $delimiters = '/'.substr($delimiter,2).'/';
-            }
-            $numbersArray = preg_split($delimiters,$addParameters);
+            list($delimiters,$addParameters) = $this->return_delimiters($addParameters);
+            echo $delimiters;
+            $numbersArray = preg_split($delimiters, $addParameters);
             $addResult = 0;
             $negativeNumbers = "";
-            for ($i = 0; $i < sizeof($numbersArray); $i++){
-                if(!empty($numbersArray[$i]) and $numbersArray[$i] <= 1000) {
+            for ($i = 0; $i < sizeof($numbersArray); $i++) {
+                if (!empty($numbersArray[$i]) and $numbersArray[$i] <= 1000) {
                     $addResult += $numbersArray[$i];
                     if ($numbersArray[$i] < 0)
                         $negativeNumbers .= $numbersArray[$i];
                 }
             }
-            if(strlen($negativeNumbers) > 0)
-                throw new \Exception('Numeros Negativos: '.$negativeNumbers);
+            if (strlen($negativeNumbers) > 0)
+                throw new \Exception('Numeros Negativos: ' . $negativeNumbers);
             return $addResult;
         }
+    }
+
+    private function return_delimiters(String $addParameters)
+    {
+        $delimiters = '/,|\n/';
+        if(str_starts_with($addParameters,"//")) {
+            list($delimiter, $addParameters) = explode("\n", $addParameters, 2);
+            $delimiter = explode("][", substr($delimiter, 2, strlen($delimiter) - 2));
+            if (sizeof($delimiter) == 1) {
+                if ($delimiter[0] == "[]")
+                    return ["/[\D]*/", $addParameters];
+                else {
+                    $delimiters = str_replace("[","",$delimiter[0]);
+                    $delimiters = str_replace("]","",$delimiters);
+                    return ['/' . $delimiters . '/', $addParameters];
+                }
+            } else {
+                if ($delimiter[0] == "[")
+                    return ["/[\D]*/", $addParameters];
+                else
+                    $delimiters = substr($delimiter[0], 1, strlen($delimiter[0]) - 1);
+                for ($i = 1; $i < sizeof($delimiter)-1; $i++) {
+                    if ($delimiter[$i] == "")
+                       return ["/[\D]*/",$addParameters];
+                    else {
+                        $delimiters .= "|" . $delimiter[$i];
+                    }
+                }
+                if ($delimiter[ sizeof($delimiter)-1] == "]")
+                    return ["/[\D]*/", $addParameters];
+                else
+                    $delimiters .= "|".substr($delimiter[sizeof($delimiter)-1], 0, strlen($delimiter[sizeof($delimiter)-1]) - 1);
+                $delimiters = '/' . $delimiters . '/';
+                return [$delimiters,$addParameters];
+            }
+        }else{
+            return [$delimiters,$addParameters];
+        }
+
     }
 }

@@ -94,7 +94,7 @@ final class StringCalculatorTest extends TestCase
      * @test
      */
     public function return_sum_with_delimiters_with_any_lenght(){
-        $addedResult = $this -> stringCalculator->add("//[]\n12***3");
+        $addedResult = $this -> stringCalculator->add("//[sdsdddsds]\n1sdsdddsds2sdsdddsds3");
 
         $this->assertEquals(6,$addedResult);
     }
@@ -103,8 +103,8 @@ final class StringCalculatorTest extends TestCase
      * @test
      */
     public function return_sum_with_multiple_delimiters(){
-        $addedResult = $this -> stringCalculator->add("//[-][%]\n12%3");
+        $addedResult = $this -> stringCalculator->add("//[--][%][l]\n1--2%3l9");
 
-        $this->assertEquals(6,$addedResult);
+        $this->assertEquals(15,$addedResult);
     }
 }
