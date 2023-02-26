@@ -17,7 +17,7 @@ class StringCalculator
             $delimiters = '/,|\n/';
             if(str_starts_with($addParameters,"//")){
                 list($delimiter, $addParameters) = explode("\n",$addParameters,2);
-                if(substr($delimiter,2) == "[]")
+                if(substr($delimiter,2,2) == "[]")
                     $delimiters = "/[\D]*/";
                 else
                     $delimiters = '/'.substr($delimiter,2).'/';

@@ -99,4 +99,12 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals(6,$addedResult);
     }
 
+    /**
+     * @test
+     */
+    public function return_sum_with_multiple_delimiters(){
+        $addedResult = $this -> stringCalculator->add("//[-][%]\n12%3");
+
+        $this->assertEquals(6,$addedResult);
+    }
 }
