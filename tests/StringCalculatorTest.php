@@ -20,7 +20,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_zero_for_empty_string()
+    public function returnsZeroForEmptyString()
     {
         $addedResult = $this -> stringCalculator->add("");
 
@@ -30,7 +30,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_number_for_string_with_only_this_number()
+    public function returnsNumberForStringWithOnlyThisNumber()
     {
         $addedResult = $this -> stringCalculator->add("1");
 
@@ -40,7 +40,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_sum_for_string_with_two_numbers()
+    public function returnsSumForStringWithTwoNumbers()
     {
         $addedResult = $this -> stringCalculator->add("1,2");
 
@@ -49,7 +49,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_sum_for_string_with_any_amount_of_numbers()
+    public function returnsSumForStringWithAnyAmountOfNumbers()
     {
         $addedResult = $this -> stringCalculator->add("1,2,3,5,8");
 
@@ -58,7 +58,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function returns_sum_using_line_up_as_delimitator()
+    public function returnsSumUsingLineUpAsDelimitator()
     {
         $addedResult = $this -> stringCalculator->add("1\n2,3");
 
@@ -67,7 +67,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function return_sum_using_different_delimiters(){
+    public function returnSumUsingDifferentDelimiters(){
         $addedResult = $this -> stringCalculator->add("//;\n1;2");
 
         $this->assertEquals(3,$addedResult);
@@ -75,7 +75,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function return_exception_of_using_negative_numbers(){
+    public function returnExceptionOfUsingNegativeNumbers(){
         $this->expectExceptionMessage('Numeros Negativos: -2');
 
         $this -> stringCalculator->add("1,-2,3,5,8");
@@ -84,7 +84,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function return_ignore_numbers_upper_than_1000(){
+    public function returnIgnoreNumbersUpperThan1000(){
         $addedResult = $this -> stringCalculator->add("2,10003");
 
         $this->assertEquals(2,$addedResult);
@@ -93,7 +93,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function return_sum_with_delimiters_with_any_lenght(){
+    public function returnSumWithDelimitersWithAnyLenght(){
         $addedResult = $this -> stringCalculator->add("//[sdsdddsds]\n1sdsdddsds2sdsdddsds3");
 
         $this->assertEquals(6,$addedResult);
@@ -102,7 +102,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function return_sum_with_multiple_delimiters(){
+    public function returnSumWithMultipleDelimiters(){
         $addedResult = $this -> stringCalculator->add("//[--][%][l]\n1--2%3l9");
 
         $this->assertEquals(15,$addedResult);

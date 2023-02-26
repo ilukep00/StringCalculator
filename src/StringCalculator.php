@@ -14,8 +14,7 @@ class StringCalculator
         if (empty($addParameters))
             return 0;
         else {
-            list($delimiters,$addParameters) = $this->return_delimiters($addParameters);
-            echo $delimiters;
+            list($delimiters,$addParameters) = $this->returnDelimiters($addParameters);
             $numbersArray = preg_split($delimiters, $addParameters);
             $addResult = 0;
             $negativeNumbers = "";
@@ -32,7 +31,7 @@ class StringCalculator
         }
     }
 
-    private function return_delimiters(String $addParameters)
+    private function returnDelimiters(String $addParameters)
     {
         $delimiters = '/,|\n/';
         if(str_starts_with($addParameters,"//")) {
@@ -41,11 +40,8 @@ class StringCalculator
             if (sizeof($delimiter) == 1) {
                 if ($delimiter[0] == "[]")
                     return ["/[\D]*/", $addParameters];
-                else {
-                    $delimiters = str_replace("[","",$delimiter[0]);
-                    $delimiters = str_replace("]","",$delimiters);
-                    return ['/' . $delimiters . '/', $addParameters];
-                }
+                else
+                    return ['/' . substr($delimiter[0],1,strlen($delimiter[0])-2) . '/', $addParameters];
             } else {
                 if ($delimiter[0] == "[")
                     return ["/[\D]*/", $addParameters];
@@ -55,7 +51,7 @@ class StringCalculator
                     if ($delimiter[$i] == "")
                        return ["/[\D]*/",$addParameters];
                     else {
-                        $delimiters .= "|" . $delimiter[$i];
+                        $delimiters .= "|". $delimiter[$i];
                     }
                 }
                 if ($delimiter[ sizeof($delimiter)-1] == "]")
